@@ -14,6 +14,12 @@ public class RequestMutasi {
     @JsonFormat(pattern = "yyyy-MM-dd", locale = "pt-BR", timezone = "Etc/GMT+10")
     private Date endDate;
 
+    public RequestMutasi(String token, Date startDate, Date endDate) {
+        this.token = token;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     public String getToken() {
         return token;
     }

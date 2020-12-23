@@ -10,6 +10,12 @@ public class RequestVa {
 
     private Double jumlah;
 
+    public RequestVa(String type, String token, String virtualAccount) {
+        this.type = type;
+        this.token = token;
+        this.virtualAccount = virtualAccount;
+    }
+
     public String getType() {
         return type;
     }

@@ -28,7 +28,7 @@ public class MutasiRepository {
 
     public MutableLiveData<APIResponse> getMutasi(String token, MutasiRequest mutasiRequest){
         MutableLiveData<APIResponse> saldoResult = new MutableLiveData<>();
-        api.getMutasi(token, mutasiRequest).enqueue(new Callback<APIResponse>() {
+        api.getMutasi(token, mutasiRequest.getStartDate(), mutasiRequest.getEndDate()).enqueue(new Callback<APIResponse>() {
             @Override
             public void onResponse(Call<APIResponse> call, Response<APIResponse> response) {
                 saldoResult.setValue(response.body());
@@ -39,6 +39,7 @@ public class MutasiRepository {
                 System.out.println("Test : masuk");
                 saldoResult.setValue(null);
             }
+
         });
         return saldoResult;
     }

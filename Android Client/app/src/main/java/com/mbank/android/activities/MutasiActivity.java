@@ -95,7 +95,7 @@ public class MutasiActivity extends AppCompatActivity {
 
     private void showDateDialog(TextView output){
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.add(Calendar.DATE, -1);
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -106,9 +106,9 @@ public class MutasiActivity extends AppCompatActivity {
                 output.setText(date);
             }
         }, year, month, day);
+        datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
         calendar.add(Calendar.DATE, -30);
         datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
-        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         datePickerDialog.show();
     }
 

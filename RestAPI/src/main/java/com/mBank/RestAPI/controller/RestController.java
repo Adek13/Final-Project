@@ -17,6 +17,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Random;
 
 @org.springframework.web.bind.annotation.RestController
@@ -104,11 +108,11 @@ public class RestController {
         }
     }
 
-    @RequestMapping(value = "/account", method = RequestMethod.POST)
-    public ResponseEntity getVirtualAccount(@RequestHeader("Authorization") String token, @RequestBody RequestVa body){
+    @RequestMapping(value = "/account/{va}", method = RequestMethod.GET)
+    public ResponseEntity getVirtualAccount(@RequestHeader("Authorization") String token, @PathVariable("va") String va){
         try {
             String response = "";
-            body.setToken(token);
+            RequestVa body = new RequestVa("getVirtualAccount", token, va);
             String request = new Gson().toJson(body);
             System.out.println(request);
             customMessage = new CustomMessage("getVirtualAccount", "Send Request To Bank Server", request);
@@ -143,11 +147,15 @@ public class RestController {
         }
     }
 
-    @RequestMapping(value = "/mutasi", method = RequestMethod.POST)
-    public ResponseEntity getVirtualAccount(@RequestHeader("Authorization") String token, @RequestBody RequestMutasi body){
+    @RequestMapping(value = "/mutasi", method = RequestMethod.GET)
+    public ResponseEntity getVirtualAccount(@RequestHeader("Authorization") String token,
+                                            @PathParam("startDate") String startDate,
+                                            @PathParam("endDate") String endDate){
         try {
             String response = "";
-            body.setToken(token);
+            RequestMutasi body = new RequestMutasi(token,
+                    new SimpleDateFormat("yyyy-MM-dd").parse(startDate),
+                    new SimpleDateFormat("yyyy-MM-dd").parse(endDate));
             String request = new Gson().toJson(body);
             customMessage = new CustomMessage("getMutasi", "Send Request To Bank Server", request);
             String message = new Gson().toJson(customMessage);

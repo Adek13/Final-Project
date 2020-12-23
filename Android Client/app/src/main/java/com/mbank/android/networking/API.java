@@ -14,6 +14,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface API {
 
@@ -29,12 +31,15 @@ public interface API {
     @GET("/saldo")
     Call<SaldoResponse> getSaldo (@Header("Authorization") String token);
 
-    @POST("/account")
-    Call<APIResponse> getAccount (@Header("Authorization") String token, @Body VaRequest vaRequest);
+    @GET("/account/{va}")
+    Call<APIResponse> getAccount (@Header("Authorization") String token,
+                                  @Path("va") String va);
 
     @POST("/topup")
     Call<APIResponse> topUp (@Header("Authorization") String token, @Body VaRequest vaRequest);
 
-    @POST("/mutasi")
-    Call<APIResponse> getMutasi (@Header("Authorization") String token, @Body MutasiRequest mutasiRequest);
+    @GET("/mutasi")
+    Call<APIResponse> getMutasi (@Header("Authorization") String token,
+                                 @Query("startDate") String startDate,
+                                 @Query("endDate") String endDate);
 }

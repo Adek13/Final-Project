@@ -29,7 +29,7 @@ public class VaRepository {
 
     public MutableLiveData<APIResponse> getAccount(String token, VaRequest vaRequest){
         MutableLiveData<APIResponse> response = new MutableLiveData<>();
-        api.getAccount(token, vaRequest).enqueue(new Callback<APIResponse>() {
+        api.getAccount(token, vaRequest.getVirtualAccount()).enqueue(new Callback<APIResponse>() {
             @Override
             public void onResponse(Call<APIResponse> call, Response<APIResponse> responses) {
                 response.setValue(responses.body());
