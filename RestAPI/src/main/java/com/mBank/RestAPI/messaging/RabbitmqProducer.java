@@ -10,6 +10,7 @@ import com.rabbitmq.client.AMQP.BasicProperties;
 @Component
 public class RabbitmqProducer {
 
+    /* RabbitMQ Producer */
     public void send(String message){
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");

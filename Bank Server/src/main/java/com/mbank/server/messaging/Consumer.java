@@ -38,6 +38,7 @@ public class Consumer {
 
     private String response;
 
+    /* RabbitMQ Consumer Request From API Layer */
     @RabbitListener(queues = "RestApi")
     public void ApiRequest(Message message) throws InterruptedException, IOException, TimeoutException {
         String request = new String(message.getBody(), StandardCharsets.UTF_8);
@@ -69,6 +70,7 @@ public class Consumer {
         }
     }
 
+    /* RabbitMQ Basic Consumer */
     public String basicConsume() throws IOException, TimeoutException, InterruptedException {
         response = "";
         ConnectionFactory factory = new ConnectionFactory();

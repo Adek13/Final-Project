@@ -9,6 +9,7 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class Producer {
 
+    /* RabbitMQ Producer */
     public void send(String message){
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
@@ -26,6 +27,8 @@ public class Producer {
             System.out.println("Gagal Mengirim Pesan : " + e);
         }
     }
+
+    /* RabbitMQ Producer To Dummy Server */
     public void sendToDummy(String message){
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");

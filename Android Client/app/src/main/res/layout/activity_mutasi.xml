@@ -5,14 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MutasiActivity"
-    android:background="@drawable/bg"
-    android:padding="27dp">
+    android:background="@drawable/bg">
+
     <LinearLayout
+        android:layout_marginTop="0dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,6 +59,8 @@
             android:id="@+id/cardView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"
             android:layout_marginTop="10dp"
             app:cardCornerRadius="7dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -94,6 +99,8 @@
 
         <Button
             android:id="@+id/muatButton"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/cardView2"
@@ -105,6 +112,9 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView3"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"
+            android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             app:layout_constraintTop_toBottomOf="@+id/muatButton"

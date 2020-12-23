@@ -1,27 +1,18 @@
 package com.mBank.RestAPI.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.mBank.RestAPI.messaging.RabbitmqConsumer;
 import com.mBank.RestAPI.messaging.RabbitmqProducer;
 import com.mBank.RestAPI.model.*;
 import com.mBank.RestAPI.util.CustomMessage;
 import com.mBank.RestAPI.util.ResponseDouble;
-import com.mBank.RestAPI.util.ResponseVa;
-import org.json.simple.JSONObject;
-import org.springframework.amqp.core.AmqpAdmin;
-import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Random;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/")
@@ -108,6 +99,7 @@ public class RestController {
         }
     }
 
+    /* Get Virtual Account */
     @RequestMapping(value = "/account/{va}", method = RequestMethod.GET)
     public ResponseEntity getVirtualAccount(@RequestHeader("Authorization") String token, @PathVariable("va") String va){
         try {
@@ -128,6 +120,7 @@ public class RestController {
         }
     }
 
+    /* POST Top Up E-Wallet */
     @RequestMapping(value = "/topup", method = RequestMethod.POST)
     public ResponseEntity doTopUp(@RequestBody RequestVa body, @RequestHeader("Authorization") String token){
         try {
@@ -147,6 +140,7 @@ public class RestController {
         }
     }
 
+    /* GET Mutasi berdasarkan tanggal awal dan tanggal akhir */
     @RequestMapping(value = "/mutasi", method = RequestMethod.GET)
     public ResponseEntity getVirtualAccount(@RequestHeader("Authorization") String token,
                                             @PathParam("startDate") String startDate,

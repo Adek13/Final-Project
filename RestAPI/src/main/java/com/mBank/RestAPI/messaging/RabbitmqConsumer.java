@@ -19,11 +19,9 @@ public class RabbitmqConsumer {
 
     private String message;
 
-    private String messageCorrelation;
-
+    /* RabbitMQ Consumer Method */
     public String getResponse() throws IOException, TimeoutException, InterruptedException {
         message = "";
-        messageCorrelation = "";
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
         Connection connection = factory.newConnection();
